@@ -20,7 +20,7 @@ class Game
     
     puts "-------- NEXT TURN --------"
     puts "#{@current_player.name}: What does #{@num1} plus #{@num2} equal?"
-    puts "Enter your answer below:"
+    print "Answer: "
   end
 
   def game_status
@@ -35,12 +35,13 @@ class Game
       puts "---------- WINNER ---------"
       puts "#{@player2.name} is the winner with #{@player2.lives}/3"
       puts "---------------------------"
-      exit 0
+      game_over
      elsif @player2.lives == 0
       puts "---------- WINNER ---------"
       puts "#{@player1.name} is the winner with #{@player1.lives}/3"
       puts "---------------------------"
-      exit 0
+      game_over
+     
     end
   end
 
@@ -66,6 +67,13 @@ class Game
 
   def get_player_answer
    @player_answer = gets.chomp.to_i
+  end
+
+  def game_over
+    puts "-------- GAME OVER --------"
+    puts "Good bye!"
+    puts "---------------------------"
+    exit 0
   end
 
   def is_player_correct
